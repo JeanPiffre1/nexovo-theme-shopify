@@ -1,36 +1,47 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>{{ page_title }}</title>
-  
-  {{ content_for_header }}  <!-- Obligatoire pour Shopify (balises SEO, CSS, etc.) -->
-  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nova Digital Agency</title>
+  <meta name="description" content="Agence marketing digitale futuriste offrant des expériences immersives et innovantes.">
   <link rel="stylesheet" href="{{ 'style.css' | asset_url }}">
+  <!-- Icons (Bootstrap Icons) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
 <body>
-  <!-- Header -->
-  <header id="header">
-    <nav>
-      <div class="logo">Nexovo</div>
-      <ul class="menu">
-        <li><a href="#hero">Accueil</a></li>
-        <li><a href="#about">À propos</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <div class="hamburger"><i class="fas fa-bars"></i></div>
-    </nav>
+  <header class="site-header">
+    <div class="header-container">
+      <!-- Logo/Brand -->
+      <div class="site-logo">
+        <a href="#hero">Nova Digital<span>.</span></a>
+      </div>
+      <!-- Menu Toggle (Hamburger) -->
+      <div class="menu-toggle" id="js-menu-toggle">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <!-- Overlay Menu -->
+    <div class="menu-overlay" id="js-menu-overlay">
+      <div class="menu-overlay-inner">
+        <button class="menu-close" id="js-menu-close">&times;</button>
+        <nav class="menu-nav">
+          <ul>
+            <li><a href="#hero">Accueil</a></li>
+            <li><a href="#about">À propos</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
   </header>
   
-  <!-- Zone de contenu qui sera injectée par le template -->
   {{ content_for_layout }}
-
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Nexovo. Tous droits réservés.</p>
-  </footer>
   
-  <script src="{{ 'script.js' | asset_url }}"></script>
+  <footer class="site-footer">
+    <p>&copy; 2025 Nova Digital Agency. Tous droits réservés.</p>
+  </footer>
+  <script src="{{ 'script.js' | asset_url }}" defer></script>
 </body>
 </html>
