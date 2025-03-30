@@ -1,24 +1,14 @@
-<section class="hero" id="hero">
-  <video autoplay muted loop>
-    <source src="https://yourdomain.com/path/to/futuristic-video.mp4" type="video/mp4">
-    Votre navigateur ne supporte pas la vidéo.
+<section id="hero" class="hero-section">
+  <!-- Video de fond -->
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="https://cdn.pixabay.com/video/2024/09/18/232098_medium.mp4" type="video/mp4">
   </video>
-  <div class="content" data-aos="fade-up" data-aos-duration="1200">
-    <h1 data-aos="fade-up">Bienvenue chez Nexovo</h1>
-    <p data-aos="fade-up" data-aos-delay="300">
-      L'agence marketing du futur, où innovation et créativité se rencontrent pour transformer vos idées en succès.
-    </p>
-    <button class="btn" data-aos="fade-up" data-aos-delay="600">Réservez un RDV</button>
-  </div>
-</section>
-<section class="hero" id="hero">
-  <video autoplay muted loop class="bg-video">
-    <source src="https://yourdomain.com/path/to/futuristic-video.mp4" type="video/mp4">
-    Votre navigateur ne supporte pas la vidéo.
-  </video>
-  <div class="content">
-    <h1>Bienvenue chez Nexovo</h1>
-    <p>L'agence marketing du futur, où innovation et créativité se rencontrent.</p>
-    <button class="btn">Réservez un RDV</button>
+  <!-- Superposition sombre pour lisibilité -->
+  <div class="hero-overlay"></div>
+  <!-- Contenu du hero -->
+  <div class="hero-content container">
+    <h1 class="hero-title reveal reveal-up">Agence Marketing Digital<br>du Futur</h1>
+    <p class="hero-subtitle reveal reveal-up">Nous créons des expériences numériques immersives<br>pour propulser votre marque dans le futur.</p>
+    <a href="#services" class="hero-cta btn reveal reveal-up">Découvrir nos services</a>
   </div>
 </section>
