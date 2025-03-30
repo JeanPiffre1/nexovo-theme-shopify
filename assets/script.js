@@ -1,63 +1,38 @@
-// Initialisation de AOS pour les animations au scroll
-AOS.init({ once: true });
+// Menu toggle functionality
+const menuToggle = document.getElementById('js-menu-toggle');
+const menuOverlay = document.getElementById('js-menu-overlay');
+const menuClose = document.getElementById('js-menu-close');
+const navLinks = document.querySelectorAll('.menu-nav a');
 
-// GSAP - Animations pour la section Hero
-gsap.from(".hero h1", { duration: 1, y: -50, opacity: 0, delay: 0.5 });
-gsap.from(".hero p", { duration: 1, y: -50, opacity: 0, delay: 1 });
-gsap.from(".hero .btn", { duration: 1, y: -50, opacity: 0, delay: 1.5 });
+function openMenu() {
+  menuOverlay.classList.add('open');
+}
+function closeMenu() {
+  menuOverlay.classList.remove('open');
+}
 
-// Fonctionnalité du menu mobile
-const hamburger = document.querySelector(".hamburger");
-const mobileMenu = document.querySelector(".mobile-menu");
-const closeMenu = document.querySelector(".close-menu");
-
-hamburger.addEventListener("click", () => {
-  mobileMenu.style.display = "block";
-});
-closeMenu.addEventListener("click", () => {
-  mobileMenu.style.display = "none";
-});
-
-// Changement du style du header lors du scroll
-window.addEventListener("scroll", () => {
-  const header = document.getElementById("header");
-  if (window.scrollY > 50) {
-    header.classList.add("scrolled");
-  } else {
-    header.classList.remove("scrolled");
-  }
+// Open overlay on burger click
+menuToggle.addEventListener('click', openMenu);
+// Close on close button click
+menuClose.addEventListener('click', closeMenu);
+// Close menu when any nav link is clicked (for one-page navigation)
+navLinks.forEach(link => {
+  link.addEventListener('click', closeMenu);
 });
 
-// Effet parallax/animation sur chaque section avec GSAP ScrollTrigger
-gsap.utils.toArray("section").forEach(section => {
-  gsap.from(section, {
-    opacity: 0,
-    y: 50,
-    scrollTrigger: {
-      trigger: section,
-      start: "top 80%",
-      toggleActions: "play none none reverse"
-    },
-    duration: 1,
-    ease: "power2.out"
+// Scroll reveal animations using Intersection Observer
+const revealElems = document.querySelectorAll('.reveal');
+const observerOptions = { threshold: 0.2 };
+const revealOnScroll = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) {
+      entry.target.classList.add('active');
+      observer.unobserve(entry.target);
+    }
   });
-});
-// Animation initiale pour le hero
-gsap.from(".hero .content h1", { duration: 1.2, y: -80, opacity: 0, ease: "power2.out" });
-gsap.from(".hero .content p", { duration: 1.2, y: 50, opacity: 0, delay: 0.5, ease: "power2.out" });
-gsap.from(".hero .content .btn", { duration: 1.2, y: 50, opacity: 0, delay: 0.8, ease: "power2.out" });
+}, observerOptions);
 
-// Scroll-triggered animations pour chaque section
-gsap.utils.toArray("section").forEach(section => {
-  gsap.from(section, {
-    scrollTrigger: {
-      trigger: section,
-      start: "top 80%",
-      toggleActions: "play none none reverse"
-    },
-    opacity: 0,
-    y: 50,
-    duration: 1.2,
-    ease: "power2.out"
-  });
+// Observe each element with class 'reveal'
+revealElems.forEach(elem => {
+  revealOnScroll.observe(elem);
 });
