@@ -3,14 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <title>{{ page_title }}</title>
-
-  {{ content_for_header }}  <!-- ✅ OBLIGATOIRE -->
-
+  
+  {{ content_for_header }}  <!-- Obligatoire pour Shopify (balises SEO, CSS, etc.) -->
+  
   <link rel="stylesheet" href="{{ 'style.css' | asset_url }}">
 </head>
 <body>
-  {% section 'hero' %}
+  <!-- Header -->
+  <header id="header">
+    <nav>
+      <div class="logo">Nexovo</div>
+      <ul class="menu">
+        <li><a href="#hero">Accueil</a></li>
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="hamburger"><i class="fas fa-bars"></i></div>
+    </nav>
+  </header>
+  
+  <!-- Zone de contenu qui sera injectée par le template -->
   {{ content_for_layout }}
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Nexovo. Tous droits réservés.</p>
+  </footer>
+  
   <script src="{{ 'script.js' | asset_url }}"></script>
 </body>
 </html>
