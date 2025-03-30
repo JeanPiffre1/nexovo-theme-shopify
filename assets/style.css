@@ -237,3 +237,64 @@ footer {
     width: 100%;
   }
 }
+/* Vidéo de fond */
+.bg-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+  filter: brightness(0.6);
+}
+
+/* Bouton amélioré */
+.hero .btn {
+  margin-top: 20px;
+  padding: 15px 30px;
+  border: 2px solid #1A73E8;
+  background: transparent;
+  color: #1A73E8;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+.hero .btn:hover {
+  background: #1A73E8;
+  color: #fff;
+}
+.hero .btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: left 0.5s;
+}
+.hero .btn:hover::after {
+  left: 100%;
+}
+
+/* Effets de parallaxe pour les sections */
+section {
+  position: relative;
+  overflow: hidden;
+}
+section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0,0,0,0.2), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
