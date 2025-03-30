@@ -1,6 +1,13 @@
 [
   {
-    "name": "Nexovo Theme",
-    "settings": []
+    "name": "Paramètres du thème Nexovo",
+    "settings": [
+      {
+        "type": "text",
+        "id": "placeholder_setting",
+        "label": "Paramètre test",
+        "default": "Hello Nexovo"
+      }
+    ]
   }
 ]
