@@ -1,38 +1,33 @@
-// Menu toggle functionality
-const menuToggle = document.getElementById('js-menu-toggle');
-const menuOverlay = document.getElementById('js-menu-overlay');
-const menuClose = document.getElementById('js-menu-close');
-const navLinks = document.querySelectorAll('.menu-nav a');
+// Activation du menu mobile
+const menuToggle = document.getElementById('menu-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+const menuClose = document.getElementById('menu-close');
 
-function openMenu() {
-  menuOverlay.classList.add('open');
-}
-function closeMenu() {
-  menuOverlay.classList.remove('open');
-}
-
-// Open overlay on burger click
-menuToggle.addEventListener('click', openMenu);
-// Close on close button click
-menuClose.addEventListener('click', closeMenu);
-// Close menu when any nav link is clicked (for one-page navigation)
-navLinks.forEach(link => {
-  link.addEventListener('click', closeMenu);
+menuToggle.addEventListener('click', () => {
+  mobileMenu.classList.add('active');
+});
+menuClose.addEventListener('click', () => {
+  mobileMenu.classList.remove('active');
 });
 
-// Scroll reveal animations using Intersection Observer
-const revealElems = document.querySelectorAll('.reveal');
-const observerOptions = { threshold: 0.2 };
-const revealOnScroll = new IntersectionObserver((entries, observer) => {
+// Animation de révélation avec IntersectionObserver
+const reveals = document.querySelectorAll('.reveal');
+
+const observer = new IntersectionObserver((entries, observer) => {
   entries.forEach(entry => {
     if(entry.isIntersecting) {
       entry.target.classList.add('active');
       observer.unobserve(entry.target);
     }
   });
-}, observerOptions);
+}, { threshold: 0.2 });
 
-// Observe each element with class 'reveal'
-revealElems.forEach(elem => {
-  revealOnScroll.observe(elem);
+reveals.forEach(element => {
+  observer.observe(element);
 });
+
+// (Optionnel) GSAP pour animations complexes – assure-toi d'inclure le CDN GSAP dans le header si besoin
+// Exemple d'animation GSAP pour le Hero (décommenter et adapter si souhaité) :
+// gsap.from(".hero-content h1", { duration: 1.2, y: -80, opacity: 0, ease: "power3.out" });
+// gsap.from(".hero-content p", { duration: 1.2, y: -50, opacity: 0, delay: 0.3, ease: "power3.out" });
+// gsap.from(".hero-btn", { duration: 1.2, y: -50, opacity: 0, delay: 0.6, ease: "power3.out" });
