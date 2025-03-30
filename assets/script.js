@@ -42,3 +42,22 @@ gsap.utils.toArray("section").forEach(section => {
     ease: "power2.out"
   });
 });
+// Animation initiale pour le hero
+gsap.from(".hero .content h1", { duration: 1.2, y: -80, opacity: 0, ease: "power2.out" });
+gsap.from(".hero .content p", { duration: 1.2, y: 50, opacity: 0, delay: 0.5, ease: "power2.out" });
+gsap.from(".hero .content .btn", { duration: 1.2, y: 50, opacity: 0, delay: 0.8, ease: "power2.out" });
+
+// Scroll-triggered animations pour chaque section
+gsap.utils.toArray("section").forEach(section => {
+  gsap.from(section, {
+    scrollTrigger: {
+      trigger: section,
+      start: "top 80%",
+      toggleActions: "play none none reverse"
+    },
+    opacity: 0,
+    y: 50,
+    duration: 1.2,
+    ease: "power2.out"
+  });
+});
